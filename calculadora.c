@@ -28,21 +28,24 @@
 // Variables Globales
 //===========================================================================================
 float a[80];
-int datos();
-void menu();
+
 
 //===========================================================================================
 // Declaración de Funciones
 //===========================================================================================
-float prom();
-float vari();
-int fact();
-float poi(int n, float m);
-int MenuPrincipal();
-int MenuEstadistica();
+int getData();
+double media(int numeroDatos);
+//float vari();
+//int fact();
+//float poi(int n, float m);
 
-int main()
-{
+
+int main(){
+  int numDatos;
+  numDatos = getData();
+  printf("La media es: %.3lf", media(numDatos));
+
+/*
     int Op, x, z;
     float med, var, estan, dis, y;
 
@@ -94,7 +97,7 @@ int main()
         }
     } while (Op != 0);
     getch();
-
+*/
     return 0;
 }
 
