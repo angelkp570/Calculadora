@@ -34,31 +34,24 @@ int getData(){
   return n;
 }
 
-double media(int numDatos)
-{
-    
-    double prom=0.0;
-    for (int i = 0; i < numDatos; i++)
-    {
-        prom += array[i];
-    }
-    prom = prom / numDatos;
-    return prom;
+double media(int numDatos){
+  double prom = 0.0;
+  for (int i = 0; i < numDatos; i++){
+    prom += array[i];
+  }
+  return prom / numDatos;
 }
 
-/*
-float vari(int n)
-{
-    int cont;
-    float resultado = 0, pm;
-    pm = prom(n);
-    for (cont = 1; cont <= n; cont++)
-    {
-        resultado += (pow((a[cont] - pm), 2));
-    }
-    resultado /= n;
-    return resultado;
+double varianza(int numDatos){
+  double resultado = 0.0, x;
+  x = media(numDatos);
+  for (int i = 0; i < numDatos; i++){
+    resultado += (pow((array[i] - x), 2));
+  }
+  return pow(resultado / (numDatos - 1), 0.5);
 }
+/*
+
 
 int fact(int n)
 {

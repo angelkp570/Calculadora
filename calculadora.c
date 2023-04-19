@@ -35,16 +35,18 @@ float a[80];
 //===========================================================================================
 int getData();
 double media(int numeroDatos);
+double varianza(int numeroDatos);
 //float vari();
 //int fact();
 //float poi(int n, float m);
 
 
 int main(){
-  int numDatos;
-  numDatos = getData();
-  printf("La media es: %.3lf", media(numDatos));
+  //int numDatos;
+  //numDatos = getData();
+  printf("La media es: %.3lf", media(getData()));
 
+  printf("La varianza es: %.3lf", varianza(getData()));
 /*
     int Op, x, z;
     float med, var, estan, dis, y;
