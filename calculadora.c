@@ -13,6 +13,7 @@
 //           Si se introducen datos válidos, el programa realizará la multiplicación, mostrará
 //           el resultado con formato de polinomio 
 // Autor:    Luis Angel Hernández Pascual
+// Fecha:    
 //===========================================================================================
 
 //===========================================================================================

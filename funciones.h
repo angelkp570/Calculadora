@@ -3,6 +3,7 @@ int MenuPrincipal()
     int opc;
     do
     {
+
         printf("\n\n1. Estadistica basica\n");
         printf("2. Multiplicacion de polinomios\n");
         printf("3. Factorial\n");
