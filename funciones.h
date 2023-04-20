@@ -1,37 +1,45 @@
 double array[100];
+int numDatos;
 
 int getData(){
-  int cont, resp, respp, n;
+  int respuesta;
   // char resp;
-  printf("Conoce la cantidad de datos?1/0");
-  scanf("%d", &resp);
 
-  if (resp == 1)
-  {
-      printf("\n\nIngrese el numero de datos:\t");
-      scanf("%d", &n);
-      printf("\n\nIngrese datos:");
-      for (cont = 0; cont < n; cont++)
-      {
-          printf("\n%d.- ", cont);
-          scanf("%lf", &array[cont]);
+  if(numDatos == 0){
+    printf("\nConoce la cantidad de datos? (1/0) ");
+    scanf("%d", &respuesta);
+
+    if (respuesta == 1){
+      printf("\nIngrese el numero de datos: ");
+      scanf("%d", &numDatos);
+      for (int cont = 0; cont < numDatos; cont++){
+        printf("Dato %d: ", cont + 1);
+        scanf("%lf", &array[cont]);
       }
-  }
+    }
 
-  if (resp == 0)
-  {
-      n = 0;
-      printf("\n");
-      do
-      {
-          n += 1;
-          printf("\nIngrese el valor %d:\n", n);
-          scanf("%f", &array[n]);
-          printf("Desea agregar otro valor?(1/0)");
-          scanf("%d", &respp);
-      } while (respp == 1);
+    if (respuesta == 0){
+      numDatos = 0;
+      do{      
+        printf("Dato %d: ", numDatos + 1);
+        scanf("%lf", &array[numDatos]);
+        printf("Desea agregar otro valor?(1/0) ");
+        scanf("%d", &respuesta);
+        numDatos++;
+      }while(respuesta == 1);
+    }
   }
-  return n;
+  else{
+    printf("Ocupar los datos actuales? (1/0)");
+    scanf("%d", &respuesta);
+    if(respuesta == 1){
+      return numDatos;
+    }
+    else
+      getData();
+  }
+  
+  return numDatos;
 }
 
 double media(int numDatos){
@@ -50,7 +58,11 @@ double varianza(int numDatos){
   }
   return pow(resultado / (numDatos - 1), 0.5);
 }
+
+
+
 /*
+
 
 
 int fact(int n)

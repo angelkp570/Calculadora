@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
+#include <stdbool.h>
 #include "funciones.h"
 
 //===========================================================================================
