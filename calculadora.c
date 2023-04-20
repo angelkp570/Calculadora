@@ -22,50 +22,53 @@
 #include <conio.h>
 #include <math.h>
 #include "funciones.h"
-
+#include "menus.h"
 //===========================================================================================
 // Variables Globales
 //===========================================================================================
-int opcion;
-float a[80];
+
 
 //===========================================================================================
 // Declaración de Funciones
 //===========================================================================================
-int MenuPrincipal();
-int MenuEstadistica();
-void menu();
+
+int menuPrincipal();
+int menuEstadistica();
   
 int main(){
+  int opcion;
   printf("===============================\n");
   printf("\tCalculadora\n");
   printf("===============================");
   do{
-    opcion = MenuPrincipal();
+    opcion = menuPrincipal();
     switch (opcion){
       case 1:
-        opcion = MenuEstadistica();
+        opcion = menuEstadistica();
         switch (opcion){
           case 1:
-            menu(1);
-            printf("\n\nLa Media es: ");
+            printf("\nConstruccion de la funcion Media");
             break;
-          case 2:
-            menu(2);
-            printf("\n\nLa Varianza es: ");
+          case 2:            
+            printf("\nConstruccion de la funcion Varianza");
             break;
-          case 3:
-            menu(3);
-            printf("\nLa devicion estandar es:");
+          case 3:            
+            printf("\nConstruccion de la funcion Desviacion Estandar");
+            break;
+          case 0:
+            printf("bye :) !!!");
             break;
         }
         break;
       case 2:
+        printf("\nConstruccion de la funcion Polinomios");
         break;
       case 3:
-        menu(5);
-        printf("El Factorial es: ");
+        printf("\nConstruccion de la funcion Libre");
         break;
+      case 0:
+            printf("bye :) !!!");
+            break;
     }
   }while (opcion != 0);
 getch();
