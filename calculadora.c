@@ -22,80 +22,87 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
+#include <stdlib.h>
 #include "funciones.h"
 
 //===========================================================================================
 // Variables Globales
 //===========================================================================================
-float a[80];
-int datos();
-void menu();
+
 
 //===========================================================================================
 // Declaración de Funciones
 //===========================================================================================
-float prom();
-float vari();
-int fact();
-float poi(int n, float m);
-int MenuPrincipal();
-int MenuEstadistica();
 
-int main()
-{
-    int Op, x, z;
-    float med, var, estan, dis, y;
 
-    printf("TERCER TRABAJO FINAL\n\n");
-    do
-    {
-        Op = MenuPrincipal();
 
-        switch (Op)
-        {
-        case 1:
-            Op = MenuEstadistica();
+void LeerPolinomio(int grado,int vect[]);
+void ListarPolinomio(int vec[],int grado);
+void MultPolinomio(int grado,int vecA[],int vecB[],int Res[]);
 
-            switch (Op)
-            {
-            case 1:
-                menu(1);
-                x = datos(x);
-                menu(1);
-                med = prom(x);
-                printf("\n\nLa Media es: %f", med);
-                break;
-            case 2:
-                menu(2);
-                x = datos(x);
-                menu(2);
-                var = vari(x);
-                printf("\n\nLa Varianza es: %f", var);
-                break;
-            case 3:
-                menu(3);
-                x = datos(x);
-                menu(3);
-                estan = sqrt(vari(x));
-                printf("\nLa devicion estandar es: %f", estan);
-                break;
-            }
-            break;
-        case 2:
-            break;
-        case 3:
-            menu(5);
-            printf("Ingrese El numero:\t");
-            scanf("%d", &x);
-            x = fact(x);
-            menu(5);
-            printf("El Factorial es:%d", x);
-            break;
-        }
-    } while (Op != 0);
-    getch();
-
-    return 0;
+int main(){
+       int grado1,grado2,i,k,j,aux=0,temp;
+       int vec1[10]={0,0,0,0,0,0,0,0,0,0};
+       int vec2[10]={0,0,0,0,0,0,0,0,0,0};
+       
+       do{
+          printf("Introduce el grado del primer polinomio:\n");
+          scanf("%i",&grado1);       
+          LeerPolinomio(grado1,vec1);
+       }while(grado1<0);
+       
+       
+       do{
+          printf("\n\nIntroduce el grado del segundo polinomio:\n");
+          scanf("%i",&grado2);       
+          LeerPolinomio(grado2,vec2);
+       }while(grado2<0);
+       
+       int coef[grado1+grado2];
+       printf("\n\nLos polinomios a multiplicar son:\n");
+       ListarPolinomio(vec1,grado1);
+       ListarPolinomio(vec2,grado2);
+     
+       printf("\n");
+       
+       MultPolinomio(grado1+grado2,vec1,vec2,coef);
+       printf("Resultado:\n");      
+       ListarPolinomio(coef,grado1+grado2);
+             
+       getch();
 }
+       
+void LeerPolinomio(int grado,int vect[]){
+     int i;
+     if(grado<0){
+          printf("\nError: Grado del polinomio no valido\n\n");
+          return;
+       }
+     printf("Introduce los coeficientes del polinomio:\n");
+     for(i=0;i<=grado;i++){
+           printf("Coeficiente de x^%i: ",i);
+           scanf("%i",&vect[i]);
+     }
+}
+
+void ListarPolinomio(int vec[],int grado){
+     int i;
+     for(i=grado;i>=0;i--){
+         printf("%i x^%i\t",vec[i],i);
+     }
+     printf("\n");
+}
+		
+void MultPolinomio(int grado,int vecA[],int vecB[],int Res[]){
+     int k,j,temp;
+     for( k = 0; k <= grado; k++){             
+             temp=0;
+             for( j = 0; j <= k; j++){
+                 temp=temp+(vecA[j]*vecB[k-j]);                 
+             }
+             Res[k]=temp;            
+     }
+}
+
 
 
