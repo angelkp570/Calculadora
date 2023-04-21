@@ -56,22 +56,10 @@ double varianza(int numDatos){
   for (int i = 0; i < numDatos; i++){
     resultado += (pow((array[i] - x), 2));
   }
-  return pow(resultado / (numDatos - 1), 0.5);
+  return resultado / (numDatos - 1);
 }
 
-
-
-/*
-
-
-
-int fact(int n)
-{
-    int cont, fac = 1;
-    for (cont = 1; cont <= n; cont++)
-    {
-        fac = fac * cont;
-    }
-    return fac;
+double desvEst(int numDatos){
+  return pow(varianza(numDatos), 0.5);
 }
-*/
+

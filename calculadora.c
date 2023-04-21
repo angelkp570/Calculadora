@@ -45,63 +45,12 @@ double varianza(int numeroDatos);
 int main(){
   //int numDatos;
   //numDatos = getData();
-  printf("La media es: %.3lf", media(getData()));
+  printf("La media es: %.3lf\n", media(getData()));
 
-  printf("La varianza es: %.3lf", varianza(getData()));
-/*
-    int Op, x, z;
-    float med, var, estan, dis, y;
+  printf("La varianza muestral es: %.3lf\n", varianza(getData()));
 
-    printf("TERCER TRABAJO FINAL\n\n");
-    do
-    {
-        Op = MenuPrincipal();
-
-        switch (Op)
-        {
-        case 1:
-            Op = MenuEstadistica();
-
-            switch (Op)
-            {
-            case 1:
-                menu(1);
-                x = datos(x);
-                menu(1);
-                med = prom(x);
-                printf("\n\nLa Media es: %f", med);
-                break;
-            case 2:
-                menu(2);
-                x = datos(x);
-                menu(2);
-                var = vari(x);
-                printf("\n\nLa Varianza es: %f", var);
-                break;
-            case 3:
-                menu(3);
-                x = datos(x);
-                menu(3);
-                estan = sqrt(vari(x));
-                printf("\nLa devicion estandar es: %f", estan);
-                break;
-            }
-            break;
-        case 2:
-            break;
-        case 3:
-            menu(5);
-            printf("Ingrese El numero:\t");
-            scanf("%d", &x);
-            x = fact(x);
-            menu(5);
-            printf("El Factorial es:%d", x);
-            break;
-        }
-    } while (Op != 0);
-    getch();
-*/
-    return 0;
+  printf("La desviacion estandar muestral es: %.3lf\n", desvEst(getData()));
+  return 0;
 }
 
 
