@@ -14,4 +14,6 @@ los mismos.
 > Si elige 2, el programa solicitará el grado de los dos polinomios (diferentes),
 estableciendo los límites para los mismos (puede incluir el grado 0).
 Si se introducen datos válidos, el programa realizará la multiplicación, mostrará
-el resultado con formato de polinomio [anxn + an
+el resultado con formato de polinomio 
+
+$$\left[ a_nx^n + a_{n-1}x^{n-1} + ... + a_1x + a_0 \right]$$
