@@ -23,6 +23,7 @@
 #include <conio.h>
 #include <math.h>
 #include <stdlib.h>
+
 #include "funciones.h"
 #include "polinomio.h"
 
@@ -35,12 +36,12 @@
 //===========================================================================================
 
 int getPolinomio(int *vect);
-void ListarPolinomio(int vec[], int grado);
-void MultPolinomio(int grado, int vecA[], int vecB[], int Res[]);
+void printPolinomio(int vec[], int grado);
+void multPolinomio(int grado, int vecA[], int vecB[], int Res[]);
 
 int main()
 {
-  int grado1, grado2, i, k, j, aux = 0, temp;
+  int grado1, grado2, aux = 0, temp;
   int vec1[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   int vec2[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -55,40 +56,19 @@ int main()
 
   int coef[grado1 + grado2];
   printf("\n\nLos polinomios a multiplicar son:\n");
-  ListarPolinomio(vec1, grado1);
-  ListarPolinomio(vec2, grado2);
+  printPolinomio(vec1, grado1);
+  printPolinomio(vec2, grado2);
 
   printf("\n");
 
-  MultPolinomio(grado1 + grado2, vec1, vec2, coef);
+  multPolinomio(grado1 + grado2, vec1, vec2, coef);
   printf("Resultado:\n");
-  ListarPolinomio(coef, grado1 + grado2);
+  printPolinomio(coef, grado1 + grado2);
 
   getch();
 }
 
 
 
-void ListarPolinomio(int vec[], int grado)
-{
-  int i;
-  for (i = grado; i >= 0; i--)
-  {
-    printf("%i x^%i\t", vec[i], i);
-  }
-  printf("\n");
-}
 
-void MultPolinomio(int grado, int vecA[], int vecB[], int Res[])
-{
-  int k, j, temp;
-  for (k = 0; k <= grado; k++)
-  {
-    temp = 0;
-    for (j = 0; j <= k; j++)
-    {
-      temp = temp + (vecA[j] * vecB[k - j]);
-    }
-    Res[k] = temp;
-  }
-}
+
