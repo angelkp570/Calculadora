@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
+#include <stdbool.h>
 #include "funciones.h"
 #include "menus.h"
 //===========================================================================================
@@ -35,7 +36,11 @@
 
 int menuPrincipal();
 int menuEstadistica();
-  
+
+int getData();
+double media(int numeroDatos);
+double varianza(int numeroDatos);
+
 int main(){
   int opcion;
   printf("===============================\n");
@@ -48,13 +53,13 @@ int main(){
         opcion = menuEstadistica();
         switch (opcion){
           case 1:
-            printf("\nConstruccion de la funcion Media");
+            printf("La media es: %.3lf\n", media(getData()));
             break;
           case 2:            
-            printf("\nConstruccion de la funcion Varianza");
+            printf("La varianza muestral es: %.3lf\n", varianza(getData()));
             break;
           case 3:            
-            printf("\nConstruccion de la funcion Desviacion Estandar");
+            printf("La desviacion estandar muestral es: %.3lf\n", desvEst(getData()));
             break;
           case 0:
             printf("bye :) !!!");
@@ -72,6 +77,6 @@ int main(){
             break;
     }
   }while (opcion != 0);
-getch();
-return 0;
+  getch();
+  return 0;
 }
