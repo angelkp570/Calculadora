@@ -23,9 +23,11 @@
 #include <conio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #include "funciones.h"
 #include "polinomio.h"
+#include "array.h"
 
 //===========================================================================================
 // Variables Globales
@@ -35,36 +37,42 @@
 // Declaración de Funciones
 //===========================================================================================
 
-int getPolinomio(int *vect);
-void printPolinomio(int vec[], int grado);
-void multPolinomio(int grado, int vecA[], int vecB[], int Res[]);
+int getPolinomio(float *vect);
+void printPolinomio(float *vec, int grado);
+void multPolinomio(int grado, float *vecA, float *vecB, float Res[]);
+
+void printPolinomio2(float *vec, int grado);
+float * memoriaArray(int len);
 
 int main()
 {
   int grado1, grado2, aux = 0, temp;
-  int vec1[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-  int vec2[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  //===========================================================
+  float *array1, *array2;
+  array1 = memoriaArray(5);
+  array2 = memoriaArray(5);
+  size_t len =((&array1)[1] - array1);
+  printf("%d \n", len);
+  printPolinomio2(array1, 4);
+  //===========================================================
 
-  int *punteroV1;
-  int *punteroV2;
-  punteroV1 = &vec1[0];
-  punteroV2 = &vec2[0];
-
-  grado1 = getPolinomio(punteroV1);
-  grado2 = getPolinomio(punteroV2);
+  grado1 = getPolinomio(array1);
+  grado2 = getPolinomio(array2);
 
 
-  int coef[grado1 + grado2];
+  float coef[grado1 + grado2];
   printf("\n\nLos polinomios a multiplicar son:\n");
-  printPolinomio(vec1, grado1);
-  printPolinomio(vec2, grado2);
+  printPolinomio(array1, grado1);
+  printPolinomio(array2, grado2);
 
   printf("\n");
 
-  multPolinomio(grado1 + grado2, vec1, vec2, coef);
+  multPolinomio(grado1 + grado2, array1, array2, coef);
   printf("Resultado:\n");
   printPolinomio(coef, grado1 + grado2);
 
+  freeMemory(array1);
+  freeMemory(array2);
   getch();
 }
 

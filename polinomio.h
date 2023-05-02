@@ -1,4 +1,4 @@
-int getPolinomio(int *vect){
+int getPolinomio(float *vect){
   int grado;
   do{
     printf("Introduce el grado del polinomio:\n");
@@ -10,20 +10,27 @@ int getPolinomio(int *vect){
     printf("Introduce los coeficientes del polinomio:\n");
     for (int i = grado; i >= 0; i--){
       printf("Coeficiente de x^%i: ", i);
-      scanf("%i", &vect[i]);
+      scanf("%f", &vect[i]);
     }
   }while(grado < 0);
   return grado;
 }
 
-void printPolinomio(int vec[], int grado){
+void printPolinomio(float *vec, int grado){
   for (int i = grado; i >= 0; i--){//grado
-    printf("%i x^%i\t", vec[i], i);
+    printf("%.2f x^%i\t", vec[i], i);
   }
   printf("\n");
 }
 
-void multPolinomio(int grado, int vecA[], int vecB[], int Res[]){
+void printPolinomio2(float *vec, int grado){
+  for (int i = 0  ; i >= grado; i++){//grado
+    printf("%.2f ", vec[i]);
+  }
+  printf("\n");
+}
+
+void multPolinomio(int grado, float *vecA, float *vecB, float Res[]){
   int k, j, temp;
   for (k = 0; k <= grado; k++){
     temp = 0;
