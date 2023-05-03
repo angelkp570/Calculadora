@@ -1,6 +1,7 @@
 //#include <stdlib.h>
 //#include <errno.h>
 
+
 float * memoriaArray(int len){
   float *array;
   array = (float *)calloc(len, sizeof(float));

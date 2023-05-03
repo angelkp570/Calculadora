@@ -32,14 +32,15 @@
 //===========================================================================================
 // Variables Globales
 //===========================================================================================
-
+int size = 5;
 //===========================================================================================
 // Declaración de Funciones
 //===========================================================================================
 
 int getPolinomio(float *vect);
 void printPolinomio(float *vec, int grado);
-void multPolinomio(int grado, float *vecA, float *vecB, float Res[]);
+float * multPolinomio(int grado, float *vecA, float *vecB , float *coef);
+//void multPolinomio(int grado, float *vecA, float *vecB, float Res[]);
 
 void printPolinomio2(float *vec, int grado);
 float * memoriaArray(int len);
@@ -49,10 +50,13 @@ int main()
   int grado1, grado2, aux = 0, temp;
   //===========================================================
   float *array1, *array2;
-  array1 = memoriaArray(5);
-  array2 = memoriaArray(5);
-  size_t len =((&array1)[1] - array1);
-  printf("%d \n", len);
+  float *coeficientes;
+  array1 = memoriaArray(size);
+  array2 = memoriaArray(size);
+  
+  //size_t len =((&array1)[1] - array1);
+  
+  //printf("%d \n", len);
   printPolinomio2(array1, 4);
   //===========================================================
 
@@ -60,16 +64,17 @@ int main()
   grado2 = getPolinomio(array2);
 
 
-  float coef[grado1 + grado2];
+  //float coef[grado1 + grado2];
+  coeficientes = memoriaArray(grado1 + grado2);
   printf("\n\nLos polinomios a multiplicar son:\n");
   printPolinomio(array1, grado1);
   printPolinomio(array2, grado2);
 
   printf("\n");
 
-  multPolinomio(grado1 + grado2, array1, array2, coef);
+  coeficientes = multPolinomio(grado1 + grado2, array1, array2, coeficientes);
   printf("Resultado:\n");
-  printPolinomio(coef, grado1 + grado2);
+  printPolinomio(coeficientes, grado1 + grado2);
 
   freeMemory(array1);
   freeMemory(array2);

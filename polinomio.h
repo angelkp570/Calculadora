@@ -1,3 +1,6 @@
+//#include "array.h"
+
+
 int getPolinomio(float *vect){
   int grado;
   do{
@@ -30,13 +33,14 @@ void printPolinomio2(float *vec, int grado){
   printf("\n");
 }
 
-void multPolinomio(int grado, float *vecA, float *vecB, float Res[]){
+float * multPolinomio(int grado, float *vecA, float *vecB, float *coef){
   int k, j, temp;
   for (k = 0; k <= grado; k++){
     temp = 0;
     for (j = 0; j <= k; j++){
       temp = temp + (vecA[j] * vecB[k - j]);
     }
-    Res[k] = temp;
+    coef[k] = temp;
   }
+  return coef;
 }
