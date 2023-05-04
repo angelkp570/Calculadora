@@ -13,7 +13,7 @@
 //           Si se introducen datos válidos, el programa realizará la multiplicación, mostrará
 //           el resultado con formato de polinomio
 // Autor:    Luis Angel Hernández Pascual
-// Fecha:    
+// Fecha:
 //===========================================================================================
 
 //===========================================================================================
@@ -23,12 +23,18 @@
 #include <conio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <errno.h>
+
 #include "funciones.h"
 #include "menus.h"
+#include "polinomio.h"
+#include "array.h"
+
 //===========================================================================================
 // Variables Globales
 //===========================================================================================
-
+int size = 5;
 
 //===========================================================================================
 // Declaración de Funciones
@@ -40,6 +46,14 @@ int menuEstadistica();
 int getData();
 double media(int numeroDatos);
 double varianza(int numeroDatos);
+
+int getPolinomio(float *vect);
+void printPolinomio(float *vec, int grado);
+float * multPolinomio(int grado, float *vecA, float *vecB , float *coef);
+
+void printPolinomio2(float *vec, int grado);
+float * memoriaArray(int len);
+
 
 int main(){
   int opcion;
@@ -67,7 +81,32 @@ int main(){
         }
         break;
       case 2:
-        printf("\nConstruccion de la funcion Polinomios");
+        ;        
+        //===========================================================
+        int grado1, grado2;
+        float *array1, *array2;
+        float *coeficientes;
+        array1 = memoriaArray(size);
+        array2 = memoriaArray(size);        
+        //===========================================================
+
+        grado1 = getPolinomio(array1);
+        grado2 = getPolinomio(array2);
+        
+        coeficientes = memoriaArray(grado1 + grado2);
+        printf("\n\nLos polinomios a multiplicar son:\n");
+        printPolinomio(array1, grado1);
+        printPolinomio(array2, grado2);
+
+        printf("\n");
+
+        coeficientes = multPolinomio(grado1 + grado2, array1, array2, coeficientes);
+        printf("Resultado:\n");
+        printPolinomio(coeficientes, grado1 + grado2);
+        freeMemory(array1);
+        freeMemory(array2);
+        freeMemory(coeficientes);
+                
         break;
       case 3:
         printf("\nConstruccion de la funcion Libre");
@@ -80,3 +119,5 @@ int main(){
   getch();
   return 0;
 }
+
+
